@@ -1,0 +1,581 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080d18">
+<meta name="description" content="Parth Dubey — Student, independent learner and seeker of infinite knowledge.">
+<title>Parth Dubey | Infinite Knowledge</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+:root {
+  --bg: #080d18;
+  --panel: #101827;
+  --gold: #d6b36a;
+  --white: #f4f1e9;
+  --muted: #9ca7b8;
+  --line: rgba(214,179,106,.2);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; scroll-behavior:smooth; }
+
+body {
+  background:var(--bg);
+  color:var(--white);
+  font-family:'DM Sans',sans-serif;
+  overflow-x:hidden;
+}
+
+body::before {
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+  background:
+    radial-gradient(circle at 80% 15%,rgba(57,81,126,.18),transparent 30%),
+    radial-gradient(circle at 10% 65%,rgba(167,122,53,.10),transparent 28%);
+}
+
+a { color:inherit; text-decoration:none; }
+
+nav {
+  height:78px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0 8%;
+  border-bottom:1px solid rgba(255,255,255,.07);
+  position:sticky;
+  top:0;
+  background:rgba(8,13,24,.91);
+  backdrop-filter:blur(16px);
+  z-index:100;
+}
+
+.logo {
+  font-family:'Playfair Display',serif;
+  font-size:23px;
+  letter-spacing:2px;
+  color:var(--gold);
+}
+
+.nav-links { display:flex; gap:30px; }
+
+.nav-links a {
+  color:var(--muted);
+  font-size:12px;
+  letter-spacing:1px;
+  transition:.3s;
+}
+
+.nav-links a:hover { color:var(--gold); }
+
+.menu-btn {
+  display:none;
+  background:none;
+  border:0;
+  color:var(--gold);
+  font-size:25px;
+}
+
+.hero {
+  min-height:88vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:100px 12%;
+  position:relative;
+}
+
+.eyebrow {
+  color:var(--gold);
+  letter-spacing:5px;
+  font-size:11px;
+  font-weight:700;
+  margin-bottom:28px;
+}
+
+.hero h1 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(54px,9vw,112px);
+  line-height:1.04;
+  font-weight:500;
+  max-width:900px;
+}
+
+.hero h1 span { color:var(--gold); }
+
+.hero p {
+  color:var(--muted);
+  max-width:590px;
+  font-size:16px;
+  line-height:1.9;
+  margin:28px 0 36px;
+}
+
+.actions { display:flex; gap:15px; flex-wrap:wrap; }
+
+.btn {
+  padding:15px 25px;
+  border:1px solid var(--gold);
+  font-size:11px;
+  letter-spacing:1.5px;
+  font-weight:700;
+  transition:.3s;
+}
+
+.btn.primary { background:var(--gold); color:#111827; }
+
+.btn:hover { transform:translateY(-4px); box-shadow:0 10px 30px #0005; }
+
+.hero-note {
+  position:absolute;
+  right:10%;
+  bottom:12%;
+  color:var(--gold);
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-size:18px;
+  opacity:.8;
+}
+
+section { padding:105px 12%; }
+
+.section-label {
+  color:var(--gold);
+  letter-spacing:4px;
+  font-size:11px;
+  font-weight:700;
+  margin-bottom:18px;
+}
+
+.section-title {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(35px,5vw,57px);
+  font-weight:500;
+  margin-bottom:24px;
+}
+
+.section-intro {
+  color:var(--muted);
+  line-height:1.9;
+  max-width:700px;
+  font-size:15px;
+}
+
+.about-grid {
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:70px;
+  align-items:center;
+}
+
+.quote {
+  border-left:2px solid var(--gold);
+  padding:20px 25px;
+  margin-top:30px;
+  color:#d7dce5;
+  font-family:'Playfair Display',serif;
+  font-size:23px;
+  line-height:1.6;
+}
+
+.info-card {
+  background:linear-gradient(145deg,#172236,#0d1421);
+  border:1px solid var(--line);
+  padding:35px;
+}
+
+.info-card h3 {
+  color:var(--gold);
+  font-family:'Playfair Display',serif;
+  font-size:27px;
+  margin-bottom:25px;
+}
+
+.info-row {
+  padding:16px 0;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.info-row:last-child { border:0; }
+.info-row small { color:var(--muted); display:block; margin-bottom:6px; }
+.info-row strong { font-size:14px; font-weight:500; }
+
+.dark-section { background:#0d1421; }
+
+.cards {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  margin-top:45px;
+}
+
+.card {
+  padding:32px 27px;
+  background:var(--panel);
+  border:1px solid rgba(255,255,255,.07);
+  transition:.35s;
+  min-height:230px;
+}
+
+.card:hover {
+  transform:translateY(-8px);
+  border-color:var(--gold);
+}
+
+.card .number {
+  color:var(--gold);
+  font-size:12px;
+  letter-spacing:2px;
+  margin-bottom:27px;
+}
+
+.card h3 {
+  font-family:'Playfair Display',serif;
+  font-size:24px;
+  margin-bottom:14px;
+}
+
+.card p { color:var(--muted); font-size:13px; line-height:1.9; }
+
+.journey {
+  margin-top:45px;
+  border-left:1px solid var(--gold);
+  padding-left:30px;
+}
+
+.journey-item { padding:0 0 40px; position:relative; }
+
+.journey-item::before {
+  content:"";
+  position:absolute;
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:var(--gold);
+  left:-35px;
+  top:7px;
+}
+
+.journey-item h3 {
+  font-family:'Playfair Display',serif;
+  font-size:23px;
+  margin-bottom:10px;
+}
+
+.journey-item p { color:var(--muted); line-height:1.8; font-size:14px; }
+
+.vision {
+  text-align:center;
+  background:linear-gradient(140deg,#121e32,#101522);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+
+.vision .section-title { max-width:850px; margin:0 auto 25px; }
+
+.vision .section-intro { margin:auto; }
+
+.vision-mark {
+  color:var(--gold);
+  font-family:'Playfair Display',serif;
+  font-size:75px;
+  margin-bottom:20px;
+}
+
+.contact-box {
+  margin-top:40px;
+  padding:40px;
+  background:var(--panel);
+  border:1px solid var(--line);
+}
+
+.contact-box p { color:var(--muted); line-height:1.9; }
+
+footer {
+  padding:35px 12%;
+  border-top:1px solid rgba(255,255,255,.08);
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
+  color:var(--muted);
+  font-size:12px;
+}
+
+footer span { color:var(--gold); }
+
+.reveal {
+  opacity:0;
+  transform:translateY(25px);
+  transition:opacity .8s ease,transform .8s ease;
+}
+
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+@media(max-width:850px) {
+  nav { padding:0 6%; }
+  .menu-btn { display:block; }
+  .nav-links {
+    display:none;
+    position:absolute;
+    top:78px;
+    left:0;
+    width:100%;
+    padding:25px;
+    background:#0c1422;
+    flex-direction:column;
+    gap:22px;
+  }
+  .nav-links.open { display:flex; }
+  .hero { padding:100px 7%; min-height:80vh; }
+  .hero-note { display:none; }
+  section { padding:80px 7%; }
+  .about-grid { grid-template-columns:1fr; gap:35px; }
+  .cards { grid-template-columns:1fr; }
+  footer { padding:30px 7%; }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after {
+    scroll-behavior:auto !important;
+    transition:none !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a href="#home" class="logo">PD.</a>
+  <button class="menu-btn" id="menuBtn" aria-label="Open navigation">☰</button>
+  <div class="nav-links" id="navLinks">
+    <a href="#home">HOME</a>
+    <a href="#about">ABOUT</a>
+    <a href="#interests">INTERESTS</a>
+    <a href="#journey">JOURNEY</a>
+    <a href="#vision">VISION</a>
+    <a href="#contact">CONTACT</a>
+  </div>
+</nav>
+
+<header class="hero" id="home">
+  <div class="eyebrow">THE PURSUIT OF INFINITE KNOWLEDGE</div>
+  <h1>PARTH<br><span>DUBEY.</span></h1>
+  <p>
+    A student. An independent learner. A mind in constant pursuit
+    of knowledge, growth and excellence. My journey is not about
+    knowing everything today — it is about learning something
+    meaningful every day.
+  </p>
+  <div class="actions">
+    <a class="btn primary" href="#about">DISCOVER MY JOURNEY</a>
+    <a class="btn" href="#vision">MY VISION</a>
+  </div>
+  <div class="hero-note">Learn. Evolve. Repeat.</div>
+</header>
+
+<section id="about">
+  <div class="about-grid">
+    <div class="reveal">
+      <div class="section-label">01 — ABOUT ME</div>
+      <h2 class="section-title">A journey built on curiosity.</h2>
+      <p class="section-intro">
+        I am Parth Dubey, currently studying in Class 12.
+        I believe that education is more than passing examinations.
+        It is about understanding the world, questioning ideas
+        and continuously improving myself.
+        <br><br>
+        I am naturally independent and comfortable working on my
+        own. I value focus, self-learning and the freedom to explore
+        different fields of knowledge.
+      </p>
+      <div class="quote">
+        "The pursuit of knowledge has no finish line."
+      </div>
+    </div>
+
+    <div class="info-card reveal">
+      <h3>Personal Profile</h3>
+      <div class="info-row">
+        <small>NAME</small>
+        <strong>Parth Dubey</strong>
+      </div>
+      <div class="info-row">
+        <small>CURRENT EDUCATION</small>
+        <strong>Class 12 Student</strong>
+      </div>
+      <div class="info-row">
+        <small>PERSONAL APPROACH</small>
+        <strong>Independent Learning</strong>
+      </div>
+      <div class="info-row">
+        <small>CORE INTEREST</small>
+        <strong>Knowledge & Mathematics</strong>
+      </div>
+      <div class="info-row">
+        <small>PERSONAL MOTTO</small>
+        <strong>Keep Learning, Keep Evolving</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-section" id="interests">
+  <div class="reveal">
+    <div class="section-label">02 — INTERESTS & EXPLORATION</div>
+    <h2 class="section-title">Beyond the classroom.</h2>
+    <p class="section-intro">
+      Learning does not belong to one subject or one environment.
+      These are some of the areas that keep me curious and engaged.
+    </p>
+  </div>
+
+  <div class="cards">
+    <article class="card reveal">
+      <div class="number">01 / THINKING</div>
+      <h3>Mathematics</h3>
+      <p>
+        Exploring logic, patterns, problem-solving and the
+        fascinating language of numbers.
+      </p>
+    </article>
+
+    <article class="card reveal">
+      <div class="number">02 / SPORT</div>
+      <h3>Badminton</h3>
+      <p>
+        A sport that interests me through movement, strategy,
+        concentration and continuous practice.
+      </p>
+    </article>
+
+    <article class="card reveal">
+      <div class="number">03 / DISCOVERY</div>
+      <h3>Exploration</h3>
+      <p>
+        Discovering new subjects, learning different skills
+        and remaining open to unfamiliar ideas.
+      </p>
+    </article>
+  </div>
+</section>
+
+<section id="journey">
+  <div class="reveal">
+    <div class="section-label">03 — MY JOURNEY</div>
+    <h2 class="section-title">Every day is a new chapter.</h2>
+    <p class="section-intro">
+      My journey is still being written. I see every stage
+      as an opportunity to learn, improve and move forward.
+    </p>
+  </div>
+
+  <div class="journey">
+    <div class="journey-item reveal">
+      <h3>Present — Class 12</h3>
+      <p>
+        Building my academic foundation, developing understanding
+        and preparing for the next stage of education.
+      </p>
+    </div>
+
+    <div class="journey-item reveal">
+      <h3>Preparation — Competitive Examinations</h3>
+      <p>
+        Working towards the goal of preparing for and clearing
+        competitive examinations across India.
+      </p>
+    </div>
+
+    <div class="journey-item reveal">
+      <h3>The Ongoing Journey — Lifelong Learning</h3>
+      <p>
+        Expanding my knowledge, exploring new disciplines
+        and becoming a more capable and informed individual.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="vision" id="vision">
+  <div class="vision-mark">∞</div>
+  <div class="section-label">04 — THE VISION</div>
+  <h2 class="section-title">
+    Infinite knowledge.<br>
+    Unlimited possibilities.
+  </h2>
+  <p class="section-intro">
+    My ambition is to prepare for and clear India's competitive
+    examinations while developing knowledge across different
+    subjects and fields.
+    <br><br>
+    I understand that meaningful goals require patience,
+    consistency, discipline and years of learning.
+    I am at the beginning of that journey.
+  </p>
+</section>
+
+<section id="contact">
+  <div class="reveal">
+    <div class="section-label">05 — CONNECT</div>
+    <h2 class="section-title">Ideas. Knowledge. Growth.</h2>
+    <p class="section-intro">
+      This website is a reflection of my journey and the person
+      I am working towards becoming. Every new lesson adds
+      another page to the story.
+    </p>
+    <div class="contact-box">
+      <h3 style="font-family:'Playfair Display';font-size:26px;margin-bottom:15px;">
+        Thank you for visiting.
+      </h3>
+      <p>
+        This is only the beginning. The journey towards
+        infinite knowledge continues.
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>© 2026 <span>PARTH DUBEY</span></div>
+  <div>BUILT WITH CURIOSITY & PURPOSE</div>
+  <div>LEARN. EVOLVE. REPEAT.</div>
+</footer>
+
+<script>
+const menuBtn = document.getElementById('menuBtn');
+const navLinks = document.getElementById('navLinks');
+
+menuBtn.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+  });
+});
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(element => {
+  observer.observe(element);
+});
+</script>
+
+</body>
+</html>
